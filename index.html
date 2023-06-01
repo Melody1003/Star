@@ -1,0 +1,197 @@
+<html>
+ <head> 
+  <title>极星</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="stylesheet" type="text/css" href="style.css"> 
+  <style>
+  
+
+
+
+body {
+  background-color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+  margin-top: 25%;
+  position: relative;
+}
+
+h1 {
+  color: #fff;
+  font-size: 40px;
+  margin-bottom: 50px;
+  text-shadow: 2px 2px 0 #000;
+  letter-spacing: 10px;
+}
+
+p {
+  font-size: 120px;
+  font-weight: bold;
+  color: #000000;
+  font-style: italic;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+#countdown {
+  font-size: 20px;
+  color: #fff;
+  margin-top: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    letter-spacing: 6px;
+    font-style: italic;
+  }
+
+  p {
+    font-size: 20px;
+    margin-top: 10px;
+    font-style: italic;
+    margin-bottom: 0;
+  }
+
+  textarea {
+    font-size: 15px;
+    height: 200;
+    font-style: normal;
+    width: 100%;
+    size: 98px;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+
+    button {
+    font-size: 15px;
+    height: 35;
+    font-style: normal;
+    width: 100%;
+    size: 98px;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+
+input {
+    font-size: 15px;
+    height: 35;
+    font-style: normal;
+    width: 100%;
+    size: 98px;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+
+div {
+  font-size: 50px;
+  font-style: italic;
+  color: #ff00f5;
+  text-shadow: 1.5px 1.5px 0 #080080;
+  }
+
+  #countdown {
+    font-size: 16px;
+    margin-top: 20px;
+  }
+
+  .dots {
+    display: none;
+  }
+}
+ 
+</style>
+
+
+<script type="text/javascript">
+	function displayAlert(type, data, time){
+
+    var lunbo=document.createElement("div");
+    
+      if(type == "success") {
+          lunbo.style.backgroundColor = "#000000";
+      } else if(type == "error") {
+          lunbo.style.backgroundColor = "#990000";
+      } else if(type == "info") {
+          lunbo.style.backgroundColor = " #e6b800";
+      } else {
+          console.log("入参type错误");
+          return;
+      }
+
+      lunbo.id="lunbo";
+      lunbo.style.position = "absolute";
+      lunbo.style.width = "150px";
+      lunbo.style.height = "60px";
+      lunbo.style.marginLeft = "-58.5%";
+      lunbo.style.marginTop = "125%";
+      lunbo.style.left = "90%";
+      lunbo.style.top = "15%";
+      lunbo.style.color = "white";
+      lunbo.style.fontSize = "25px";
+      lunbo.style.borderRadius = "20px";
+      lunbo.style.textAlign="center";
+      lunbo.style.lineHeight="60px";
+
+      if(document.getElementById("lunbo")==null){
+          document.body.appendChild(lunbo);
+          lunbo.innerHTML=data;
+          setTimeout(function(){
+              document.body.removeChild(lunbo);
+          } ,time);
+      }
+    }
+    function test0() {
+        displayAlert("success", "操作成功", 1500);
+    }
+    function test1() {
+        displayAlert("error", "error TEST", 1500);
+    }
+    function test2() {
+        displayAlert("info", "info TEST", 1500);
+    }
+</script>
+  
+</style> 
+ </head> 
+ <body id="v1" style=""> 
+  <textarea id="jb" onblur ="Check();" class="a" ></textarea>
+  <textarea id="jc" onblur ="Check();" class="a" ></textarea>
+  <br id="v10"> 
+  <button id="bt" onclick="test0();" >工作</button> 
+  <input type="button" onclick="javascript:location.reload();" value="极星">
+  <div id="time"><div>
+  <br id="v11">
+  <script type="text/javascript" src="http://cdn.staticfile.org/jquery/2.0.0/jquery.min.js"></script> 
+  <script>
+
+    function deepMerge(obj1, obj2) {
+        let key;
+        for (key in obj2) {
+            obj1[key] = obj1[key] && obj1[key].toString() === "[object Object]" && (obj2[key] && obj2[key].toString() === "[object Object]") ? deepMerge(obj1[key], obj2[key]) : (obj1[key] = obj2[key]);
+        }
+        return obj1;
+    }
+    $(document).ready(function () {
+        $('#bt').click(() => {
+            var j1 = $('#jb').val()
+            var j2 = $('#jc').val()
+            j1 = JSON.parse(j1)
+            j2 = JSON.parse(j2)
+            var out = deepMerge(j1, j2)
+            $('#jb').val(JSON.stringify(out))
+            $('#jc').val('操作执行：JSON文件合并;JSON文件压缩\n任务处理完成：极星Star\n')
+        })
+
+    });
+</script>
+
+
+
+</body>
+</html>
